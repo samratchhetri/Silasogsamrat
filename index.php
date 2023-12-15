@@ -4,7 +4,7 @@ echo `php!!`;
 
 $servername = "localhost";
 $username = "root";
-$password = "root";
+$password = "";
 $database = "myDB";
 
 try{
