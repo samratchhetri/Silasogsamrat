@@ -1,4 +1,6 @@
-Monkey people climb fast for banana very fast
+<H1> Formula One Team Car Reveal 2023
+    <H2> Presented By 
+        <H3> Silas & Samrat
 <?php
 echo `php!!`;
 
@@ -13,3 +15,11 @@ echo "Database connected - YAY!";
 
 }catch (PDOexception $exception){
     echo "database not connected, " , $exception;}
+?>
+
+    <form method="Post">
+        <textarea name="sql" placeholder="WRITE SQL CODE HERE!">Ferrari no good</textarea>
+        <br>
+        <input type="submit">
+</form>
+
