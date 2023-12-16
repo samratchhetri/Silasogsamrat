@@ -1,13 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your Webpage Title</title>
+</head>
+<body>
+<div class="navbar">
+    <form>
+<label>E-Mail:</label>
+<input type="text" name="id" maxlength="30" value="" />
+<label>Password:</label> 
+<input type="text" name="pw" maxlength="30" value="" />
+
+<input type="submit" name="submit" value="Login" />
+</form>
+</div>
+
+<div class="Title">
+       <H1> Formula One Team Car Reveal 2023  
+        <H2> Presented By Silas & Samrat    
+            <P>Explore our Formula One car reveal showcase! Relive the excitement of past unveilings at iconic venues and key dates in F1 history. Immerse yourself in the glamour as teams unveil cutting-edge machines, setting the stage for an adrenaline-fueled season. Our webpage is your one-stop destination for a stunning collection of high-quality images, showcasing sleek designs and innovative features defining each F1 car. Whether you're a die-hard fan or a casual observer, our gallery promises to leave you awe-struck. Join us in celebrating the artistry and engineering brilliance behind Formula One's finest. Explore unveilings that shaped the sport's landscape and get ready to be captivated by the beauty beneath the covers. Welcome to the Formula One car reveal extravaganza!"
+
+    </div>
+            
+    <div id="logo-container">
+       
+    </div>
+    
+    <?php
+        // Your PHP code generating dynamic content goes here
+    ?>
+<div class="Inputfield">
+<form>
+<label for="fname">Team Name:</label>
+<input type="text" name="id" maxlength="30" placeholder="" />
+<label for="lname">Relaease Date:</label>
+<input type="text" name="pw" maxlength="30" placeholder="" />
+<label for="fname">Location of the Reveal:</label>
+<input type="text" id="fname" name="fname"placeholder="">
+<input type="submit">
+
+</form>
+</div>
+<div class="table-container">
+  <table class="datatable">
+    <tr>
+      <th>Team</th>
+      <th>Date</th>
+      <th>Location</th>
+    </tr>
+    <tr>
+      <td>Haas</td>
+      <td>January 31</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td>Redbull</td>
+      <td>Feburary 03</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>Williams</td>
+      <td>Feburary 06</td>
+      <td>Online</td>
+    </tr>
+    <tr>
+      <td>Alfa Romeo</td>
+      <td>Feburary 07</td>
+      <td>Zurich</td>
+    </tr>
+    <tr>
+      <td>AlphaTauri</td>
+      <td>Feburary 11</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>Aston Martin</td>
+      <td>Feburary 13</td>
+      <td>Silverstone</td>
+    </tr>
+    <tr>
+      <td>McLaren</td>
+      <td>Feburary 13</td>
+      <td>McLaren T.Centre</td>
+    </tr>
+    <tr>
+      <td>Ferrari</td>
+      <td>Feburary 14</td>
+      <td>Maranello</td>
+    </tr>
+    <tr>
+      <td>Mercedes</td>
+      <td>Feburary 15</td>
+      <td>Silverstone</td>
+    </tr>
+    <tr>
+      <td>Alpine</td>
+      <td>Feburary 16</td>
+      <td>London</td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>
 <link rel="stylesheet" href="styles.css"
-<H1> Formula One Team Car Reveal 2023
-    <H2> Presented By Silas & Samrat
-            <H4>Welcome to our Formula One car reveal showcase! Experience the thrill of previous years' unveilings, from iconic venues to pivotal dates in Formula One history. Immerse yourself in the glamour as teams reveal state-of-the-art machines, setting the stage for an adrenaline-fueled season.
-
-Our webpage is your one-stop destination for reliving the excitement, featuring a stunning collection of high-quality images showcasing the sleek designs and innovative features that define each Formula One car. Whether you're a die-hard fan or a casual observer, our gallery promises to leave you awe-struck and hungry for more.
-
-Join us in celebrating the artistry and engineering brilliance behind Formula One's finest. Explore the unveilings that have shaped the sport's landscape and get ready to be captivated by the beauty beneath the covers. Welcome to the Formula One car reveal extravaganza!
-
-
 <?php
 echo `php!!`;
 
@@ -23,37 +121,3 @@ $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $pas
     echo "database not connected, " , $exception;}
 ?>
 
-    <form method="Post">
-        <textarea name="sql" placeholder="WRITE SQL CODE HERE!">
-Team	       Date	        Location
-Haas	       January 31	Online
-Redbull        Feburary 03      New York
-Williams       Feburary 06      Online
-Alfa Romeo     Feburary 07      Zurich
-AlphaTauri     Feburary 11      New York
-Aston Martin   Feburary 13      Silverstone
-McLaren        Feburary 13      McLaren Technology Centre
-Ferrari        Feburary 14      Maranello
-Mercedes       Feburary 15      Silverstone
-Alpine         Feburary 16      London
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Your Webpage Title</title>
-</head>
-<body>
-    <div id="logo-container">
-        <img id="logo" src="Silas.jpg.png" alt="Your Logo Description">
-    </div>
-
-    <h1>Welcome to My Website</h1>
-    
-    <?php
-        // Your PHP code generating dynamic content goes here
-    ?>
-</body>
-</html>

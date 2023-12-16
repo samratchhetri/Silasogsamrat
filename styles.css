@@ -6,10 +6,9 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     height: 100vh; 
-    display: flex;
     align-items: center;
     justify-content: center;
-    color: #f3f1f1; 
+    color: #f6f2f2; 
     font-family: 'Arial, sans-serif;
     }
 /* styles.css */
@@ -17,4 +16,35 @@ body {
 #logo {
     max-width: 100%; 
     height: auto;
+}
+.Title {
+    text-align:center;
+    background-color: rgba(135, 6, 6, 0.1); /* Transparent background color */
+
+}
+.TeamName {
+    align-self: center;
+
+}
+.navbar {
+    text-align: right;
+}
+p {
+    font-size: 15px;
+}
+.Inputfield {
+    text-align: center;
+}
+.table-container {
+    margin-left: auto;
+    margin-right: auto;
+
+}
+table.datatable {
+    font-size: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: rgba(218, 207, 207, 1); /* Transparent background color */
+    background-color: rgb(52, 68, 68);
 }
