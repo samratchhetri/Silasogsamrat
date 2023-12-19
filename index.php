@@ -1,3 +1,34 @@
+<?php
+// Import f1car.php
+require_once 'f1car.php';
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$database = "myDB";
+
+try {
+    $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Process the form data
+        $teamName = $_POST["team_name"];
+        $releaseDate = $_POST["release_date"];
+        $location = $_POST["reveal_location"];
+
+        // Perform the database insertion
+        $stmt = $connection->prepare("INSERT INTO f1cars (Team, Date, Location) VALUES (?, ?, ?)");
+        $stmt->execute([$teamName, $releaseDate, $location]);
+    }
+    // Instantiate the F1CarLister class
+    $carLister = new F1CarLister($connection);
+    
+} catch (PDOException $exception) {
+    echo "Database not connected, " , $exception;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,128 +39,107 @@
 </head>
 <body>
 <div class="navbar">
-    <form>
-<label>E-Mail:</label>
-<input type="text" name="id" maxlength="30" value="" />
-<label>Password:</label> 
-<input type="text" name="pw" maxlength="30" value="" />
+    <form method="POST" action="">
+        <label for="id">E-Mail:</label>
+        <input type="text" id="id" name="id" maxlength="30" value="" />
 
-<input type="submit" name="submit" value="Login" />
-</form>
-</div>
+          <label for="pw">Password:</label>
+          <input type="text" id="pw" name="pw" maxlength="30" value="" />
+
+          <input type="submit" name="submit" value="Login" />
+      </form>
+  </div>
+
 
 <div class="Title">
-       <H1> Formula One Team Car Reveal 2023  
-        <H2> Presented By Silas & Samrat    
-            <P>Explore our Formula One car reveal showcase! Relive the excitement of past unveilings at iconic venues and key dates in F1 history. Immerse yourself in the glamour as teams unveil cutting-edge machines, setting the stage for an adrenaline-fueled season. Our webpage is your one-stop destination for a stunning collection of high-quality images, showcasing sleek designs and innovative features defining each F1 car. Whether you're a die-hard fan or a casual observer, our gallery promises to leave you awe-struck. Join us in celebrating the artistry and engineering brilliance behind Formula One's finest. Explore unveilings that shaped the sport's landscape and get ready to be captivated by the beauty beneath the covers. Welcome to the Formula One car reveal extravaganza!"
-
-    </div>
-            
-    <div id="logo-container">
-       
-    </div>
-    
-    <?php
-        // Your PHP code generating dynamic content goes here
-    ?>
-<div class="Inputfield">
-<form>
-<label for="fname">Team Name:</label>
-<input type="text" name="id" maxlength="30" placeholder="" />
-<label for="lname">Relaease Date:</label>
-<input type="text" name="pw" maxlength="30" placeholder="" />
-<label for="fname">Location of the Reveal:</label>
-<input type="text" id="fname" name="fname"placeholder="">
-<input type="submit">
-
-</form>
+    <h1>Formula One Team Car Reveal 2023</h1>
+    <h2>Presented By Silas & Samrat</h2>
+    <p>Explore our Formula One car reveal showcase! Relive the excitement of past unveilings at iconic venues and key dates in F1 history. Immerse yourself in the glamour as teams unveil cutting-edge machines, setting the stage for an adrenaline-fueled season. Our webpage is your one-stop destination for a stunning collection of high-quality images, showcasing sleek designs and innovative features defining each F1 car. Whether you're a die-hard fan or a casual observer, our gallery promises to leave you awe-struck. Join us in celebrating the artistry and engineering brilliance behind Formula One's finest. Explore unveilings that shaped the sport's landscape and get ready to be captivated by the beauty beneath the covers. Welcome to the Formula One car reveal extravaganza!</p>
 </div>
+
+<div id="logo-container">
+    <!-- ... (your logo content) -->
+</div>
+
+<div class="Inputfield">
+    <form method="POST" action="">
+        <label for="team_name">Team Name:</label>
+        <input type="text" id="team_name" name="team_name" maxlength="30" placeholder="" required>
+
+        <label for="release_date">Release Date:</label>
+        <input type="text" id="release_date" name="release_date" maxlength="30" placeholder="" required>
+
+        <label for="reveal_location">Location of the Reveal:</label>
+        <input type="text" id="reveal_location" name="reveal_location" placeholder="" required>
+
+        <input type="submit" name="submit" value="Submit">
+    </form>
+</div>
+
+
 <div class="table-container">
-  <table class="datatable">
-    <tr>
-      <th>Team</th>
-      <th>Date</th>
-      <th>Location</th>
-    </tr>
-    <tr>
-      <td>Haas</td>
-      <td>January 31</td>
-      <td>Online</td>
-    </tr>
-    <tr>
-      <td>Redbull</td>
-      <td>Feburary 03</td>
-      <td>New York</td>
-    </tr>
-    <tr>
-      <td>Williams</td>
-      <td>Feburary 06</td>
-      <td>Online</td>
-    </tr>
-    <tr>
-      <td>Alfa Romeo</td>
-      <td>Feburary 07</td>
-      <td>Zurich</td>
-    </tr>
-    <tr>
-      <td>AlphaTauri</td>
-      <td>Feburary 11</td>
-      <td>New York</td>
-    </tr>
-    <tr>
-      <td>Aston Martin</td>
-      <td>Feburary 13</td>
-      <td>Silverstone</td>
-    </tr>
-    <tr>
-      <td>McLaren</td>
-      <td>Feburary 13</td>
-      <td>McLaren T.Centre</td>
-    </tr>
-    <tr>
-      <td>Ferrari</td>
-      <td>Feburary 14</td>
-      <td>Maranello</td>
-    </tr>
-    <tr>
-      <td>Mercedes</td>
-      <td>Feburary 15</td>
-      <td>Silverstone</td>
-    </tr>
-    <tr>
-      <td>Alpine</td>
-      <td>Feburary 16</td>
-      <td>London</td>
-    </tr>
-  </table>
+    <table class="datatable">
+        <tr>
+            <th>Team</th>
+            <th>Date</th>
+            <th>Location</th>
+        </tr>
+        <tr>
+            <td>Haas</td>
+            <td>January 31</td>
+            <td>Online</td>
+        </tr>
+        <tr>
+            <td>Redbull</td>
+            <td>February 03</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>Williams</td>
+            <td>February 06</td>
+            <td>Online</td>
+        </tr>
+        <tr>
+            <td>Alfa Romeo</td>
+            <td>February 07</td>
+            <td>Zurich</td>
+        </tr>
+        <tr>
+            <td>AlphaTauri</td>
+            <td>February 11</td>
+            <td>New York</td>
+        </tr>
+        <tr>
+            <td>Aston Martin</td>
+            <td>February 13</td>
+            <td>Silverstone</td>
+        </tr>
+        <tr>
+            <td>McLaren</td>
+            <td>February 13</td>
+            <td>McLaren T.Centre</td>
+        </tr>
+        <tr>
+            <td>Ferrari</td>
+            <td>February 14</td>
+            <td>Maranello</td>
+        </tr>
+        <tr>
+            <td>Mercedes</td>
+            <td>February 15</td>
+            <td>Silverstone</td>
+        </tr>
+        <tr>
+            <td>Alpine</td>
+            <td>February 16</td>
+            <td>London</td>
+        </tr>
+        <?php
+            // Use the F1CarLister to dynamically append rows to the table
+            $carLister->listCars();
+            ?>
+    </table>
 </div>
 </body>
 </html>
-<link rel="stylesheet" href="styles.css"
-<?php
-echo `php!!`;
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "myDB";
-
-try {
-  $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
-
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      // Process the form data
-      $teamName = $_POST["id"];
-      $releaseDate = $_POST["pw"];
-      $location = $_POST["fname"];
-
-      // Perform the database insertion
-      $stmt = $connection->prepare("INSERT INTO your_table_name (team_name, release_date, location) VALUES (?, ?, ?)");
-      $stmt->execute([$teamName, $releaseDate, $location]);
-
-  }
-} catch (PDOException $exception) {
-  echo "Database not connected, " , $exception;
-}
-?>
-
+<link rel="stylesheet" href="styles.css">
