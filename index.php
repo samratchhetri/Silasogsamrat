@@ -114,10 +114,22 @@ $username = "root";
 $password = "";
 $database = "myDB";
 
-try{
-$connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
+try {
+  $connection = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
 
-}catch (PDOexception $exception){
-    echo "database not connected, " , $exception;}
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      // Process the form data
+      $teamName = $_POST["id"];
+      $releaseDate = $_POST["pw"];
+      $location = $_POST["fname"];
+
+      // Perform the database insertion
+      $stmt = $connection->prepare("INSERT INTO your_table_name (team_name, release_date, location) VALUES (?, ?, ?)");
+      $stmt->execute([$teamName, $releaseDate, $location]);
+
+  }
+} catch (PDOException $exception) {
+  echo "Database not connected, " , $exception;
+}
 ?>
 
