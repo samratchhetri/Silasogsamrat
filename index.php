@@ -23,7 +23,7 @@ try {
     }
     // Instantiate the F1CarLister class
     $carLister = new F1CarLister($connection);
-    
+
 } catch (PDOException $exception) {
     echo "Database not connected, " , $exception;
 }
@@ -83,56 +83,6 @@ try {
             <th>Team</th>
             <th>Date</th>
             <th>Location</th>
-        </tr>
-        <tr>
-            <td>Haas</td>
-            <td>January 31</td>
-            <td>Online</td>
-        </tr>
-        <tr>
-            <td>Redbull</td>
-            <td>February 03</td>
-            <td>New York</td>
-        </tr>
-        <tr>
-            <td>Williams</td>
-            <td>February 06</td>
-            <td>Online</td>
-        </tr>
-        <tr>
-            <td>Alfa Romeo</td>
-            <td>February 07</td>
-            <td>Zurich</td>
-        </tr>
-        <tr>
-            <td>AlphaTauri</td>
-            <td>February 11</td>
-            <td>New York</td>
-        </tr>
-        <tr>
-            <td>Aston Martin</td>
-            <td>February 13</td>
-            <td>Silverstone</td>
-        </tr>
-        <tr>
-            <td>McLaren</td>
-            <td>February 13</td>
-            <td>McLaren T.Centre</td>
-        </tr>
-        <tr>
-            <td>Ferrari</td>
-            <td>February 14</td>
-            <td>Maranello</td>
-        </tr>
-        <tr>
-            <td>Mercedes</td>
-            <td>February 15</td>
-            <td>Silverstone</td>
-        </tr>
-        <tr>
-            <td>Alpine</td>
-            <td>February 16</td>
-            <td>London</td>
         </tr>
         <?php
             // Use the F1CarLister to dynamically append rows to the table
